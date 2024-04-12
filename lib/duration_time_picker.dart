@@ -30,6 +30,7 @@ class DialPainter extends CustomPainter {
     required this.baseUnit,
     required this.labelStyle,
     required this.backgroundColor,
+    this.dynamicLabelSize = true,
   });
 
   final Color? circleColor;
@@ -44,6 +45,7 @@ class DialPainter extends CustomPainter {
   final int baseUnitHand;
   final BaseUnit baseUnit;
   final Color backgroundColor;
+  final bool dynamicLabelSize;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -125,7 +127,7 @@ class DialPainter extends CustomPainter {
       text: TextSpan(
         text:
             '$secondaryUnits${baseUnits.padLeft(2, '0')} ${baseUnitMultiplier == 0 ? getUnitString() : ''}',
-        style: labelStyle ??
+        style: labelStyle?.copyWith(fontSize: dynamicLabelSize ? size.shortestSide * 0.15 : null) ??
             Theme.of(context).textTheme.headlineMedium!.copyWith(
                 fontSize: size.shortestSide * 0.15, color: Colors.black),
       ),
@@ -180,6 +182,7 @@ class _Dial extends StatefulWidget {
     this.labelStyle,
     this.progressColor,
     required this.backgroundColor,
+    this.dynamicLabelSize = true,
   });
 
   final Color? circleColor;
@@ -189,6 +192,7 @@ class _Dial extends StatefulWidget {
   final ValueChanged<Duration> onChanged;
   final BaseUnit baseUnit;
   final Color backgroundColor;
+  final bool dynamicLabelSize;
 
   @override
   _DialState createState() => _DialState();
@@ -522,6 +526,7 @@ class DurationTimePicker extends StatelessWidget {
   final Color? progressColor;
   final TextStyle? labelStyle;
   final Color? backgroundColor;
+  final bool dynamicLabelSize;
 
   const DurationTimePicker(
       {Key? key,
@@ -533,7 +538,8 @@ class DurationTimePicker extends StatelessWidget {
       this.labelStyle,
       this.progressColor,
       this.size,
-      this.backgroundColor})
+      this.backgroundColor,
+      this.dynamicLabelSize = true,})
       : super(key: key);
 
   @override
@@ -555,6 +561,7 @@ class DurationTimePicker extends StatelessWidget {
               labelStyle: labelStyle,
               progressColor: progressColor ?? Colors.yellow,
               circleColor: circleColor ?? Colors.black,
+              dynamicLabelSize: dynamicLabelSize,
             ),
           ),
         ],
