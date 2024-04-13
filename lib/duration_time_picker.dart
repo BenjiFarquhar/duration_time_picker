@@ -127,7 +127,8 @@ class DialPainter extends CustomPainter {
       text: TextSpan(
         text:
             '$secondaryUnits${baseUnits.padLeft(2, '0')} ${baseUnitMultiplier == 0 ? getUnitString() : ''}',
-        style: labelStyle?.copyWith(fontSize: dynamicLabelSize ? size.shortestSide * 0.15 : null) ??
+        style: labelStyle?.copyWith(
+                fontSize: dynamicLabelSize ? size.shortestSide * 0.15 : null) ??
             Theme.of(context).textTheme.headlineMedium!.copyWith(
                 fontSize: size.shortestSide * 0.15, color: Colors.black),
       ),
@@ -528,19 +529,19 @@ class DurationTimePicker extends StatelessWidget {
   final Color? backgroundColor;
   final bool dynamicLabelSize;
 
-  const DurationTimePicker(
-      {Key? key,
-      this.duration = Duration.zero,
-      required this.onChange,
-      this.baseUnit = BaseUnit.minute,
-      this.padding,
-      this.circleColor,
-      this.labelStyle,
-      this.progressColor,
-      this.size,
-      this.backgroundColor,
-      this.dynamicLabelSize = true,})
-      : super(key: key);
+  const DurationTimePicker({
+    Key? key,
+    this.duration = Duration.zero,
+    required this.onChange,
+    this.baseUnit = BaseUnit.minute,
+    this.padding,
+    this.circleColor,
+    this.labelStyle,
+    this.progressColor,
+    this.size,
+    this.backgroundColor,
+    this.dynamicLabelSize = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
