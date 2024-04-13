@@ -86,8 +86,8 @@ class DialPainter extends CustomPainter {
 
     // Draw the handle that is used to drag and to indicate the position around the circle
     final handlePaint = Paint()..color = accentColor;
-    final handlePoint = getOffsetForTheta(theta, radius - 10.0);
-    canvas.drawCircle(handlePoint, 20.0, handlePaint);
+    final handlePoint = getOffsetForTheta(theta, radius - 4.0);
+    canvas.drawCircle(handlePoint, 13.0, handlePaint);
 
     // Get the appropriate secondary unit string
     String getSecondaryUnitString() {
