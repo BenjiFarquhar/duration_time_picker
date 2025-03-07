@@ -1,7 +1,13 @@
-## [1.0.0] - March 12, 2024	 
+## [1.0.2]
 
-* initial release.
+* Allow custom labelStyle with fontSize based on CustomPaint size
+* Allow label style without effecting label size
+* Make dial handle a bit smaller
 
-## [1.0.1] - March 14, 2024	 
+## [1.0.1]
 
 * changed background color
+
+## [1.0.0]
+
+* initial release.
